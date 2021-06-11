@@ -1,0 +1,32 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "node_modules": true,
+        ".vscode": true,
+        ".browserslistrc": true,
+        ".editorconfig": true,
+        "angular.json": true,
+        ".gitignore": true,
+        "karma.conf.js": true,
+        "package-lock.json": true,
+        "package.json": true,
+        "README.md": true,
+        "tsconfig.app.json": true,
+        "tsconfig.json": true,
+        "tsconfig.spec.json": true,
+        "assets": true,
+        "**/assets": true,
+        "**/environments": true,
+        "**/favicon.ico": true,
+        "**/index.html": true,
+        "**/main.ts": true,
+        "**/polyfills.ts": true,
+        "**/styles.css": true,
+        "**/test.ts": true
+    },
+    "explorerExclude.backup": null
+}
