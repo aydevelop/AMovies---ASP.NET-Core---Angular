@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-movies';
+
+  movie = {
+    title: "Title123"
+  }
+
+  duplicateNumber(n:number){
+    return n*2;
+  }
+
 }
