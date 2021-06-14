@@ -21,6 +21,76 @@ export class AppComponent implements OnInit {
         releaseDate: new Date(),
         price: 2400,
       },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
+      {
+        title: 'Spider-Man!!!###',
+        releaseDate: new Date(),
+        price: 1400,
+      },
+      {
+        title: 'Spider-Man 2',
+        releaseDate: new Date(),
+        price: 2400,
+      },
     ];
 
     this.movies2 = [
