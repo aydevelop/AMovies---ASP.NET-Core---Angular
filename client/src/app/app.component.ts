@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.movies1 = [
       {
-        title: 'Spider-Man!!!',
+        title: 'Spider-Man!!!###',
         releaseDate: new Date(),
         price: 1400,
       },
@@ -24,16 +24,16 @@ export class AppComponent implements OnInit {
     ];
 
     this.movies2 = [
-      {
-        title: 'Spider-Man 222',
-        releaseDate: new Date(),
-        price: 1400,
-      },
-      {
-        title: 'Spider-Man 222',
-        releaseDate: new Date(),
-        price: 2400,
-      },
+      // {
+      //   title: 'Spider-Man 222',
+      //   releaseDate: new Date(),
+      //   price: 1400,
+      // },
+      // {
+      //   title: 'Spider-Man 222',
+      //   releaseDate: new Date(),
+      //   price: 2400,
+      // },
     ];
   }
 

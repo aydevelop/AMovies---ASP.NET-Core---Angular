@@ -11,22 +11,7 @@ export class MoviesListComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.movies = [
-    //     {
-    //       title: 'Spider-Man!!!',
-    //       releaseDate: new Date(),
-    //       price: 1400,
-    //     },
-    //     {
-    //       title: 'Spider-Man 2',
-    //       releaseDate: new Date(),
-    //       price: 2400,
-    //     },
-    //   ];
-    // }, 1500);
-  }
+  ngOnInit(): void {}
 
   remove(index: number) {
     this.movies.splice(index, 1);

@@ -1,22 +1,22 @@
-<img
-  *ngIf="!list"
-  width="100"
-  src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
-/>
+<ng-container *ngIf="list.length === 0">
+  <h4 #loading>
+    <ng-content select="[loading]"></ng-content>
+  </h4>
+  <span *ngIf="!loading.innerHTML.trim()">
+    <img
+      width="100"
+      src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+    />
+  </span>
+</ng-container>
+
+<div *ngIf="list?.length === 0">
+  <span #empty>
+    <ng-content select="[empty]"></ng-content>
+  </span>
+  <span *ngIf="!empty.innerHTML.trim()">There are no records to display</span>
+</div>
 
 <ng-container *ngIf="list" && list.length>
-  <!-- 0">
-  <div *ngFor="let movie of list; let index = index" class="movie-container">
-    <div>
-      {{ index }} {{ movie.title | lowercase }}
-      <button style="margin-left: 1rem" (click)="remove(index)">Remove</button>
-    </div>
-    <div>
-      {{ movie.releaseDate | date: "dd-MMMM-yyyy" | uppercase }}
-    </div>
-    <div>
-      {{ movie.price | currency }}
-    </div>
-  </div> -->
   <ng-content select="[content]"></ng-content>
 </ng-container>
