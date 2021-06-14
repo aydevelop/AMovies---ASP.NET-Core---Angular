@@ -1,11 +1,12 @@
-<!-- <img
-  *ngIf="!movies"
+<img
+  *ngIf="!list"
   width="100"
   src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
 />
 
-<ng-container *ngIf="movies && movies.length > 0">
-  <div *ngFor="let movie of movies; let index = index" class="movie-container">
+<ng-container *ngIf="list" && list.length>
+  <!-- 0">
+  <div *ngFor="let movie of list; let index = index" class="movie-container">
     <div>
       {{ index }} {{ movie.title | lowercase }}
       <button style="margin-left: 1rem" (click)="remove(index)">Remove</button>
@@ -16,11 +17,6 @@
     <div>
       {{ movie.price | currency }}
     </div>
-  </div>
-</ng-container> -->
-
-<!-- <app-generic-list>
-  <ng-container></ng-container>
-</app-generic-list> -->
-
-<div>Test12</div>
+  </div> -->
+  <ng-content select="[content]"></ng-content>
+</ng-container>
