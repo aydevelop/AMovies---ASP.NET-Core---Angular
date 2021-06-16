@@ -17,6 +17,11 @@ import { CreateActorsComponent } from './actors/create-actors/create-actors.comp
 import { IndexMovTheaterComponent } from './movie-theathers/index-mov-theater/index-mov-theater.component';
 import { CreateMovTheaterComponent } from './movie-theathers/create-mov-theater/create-mov-theater.component';
 import { CreateMovieComponent } from './movies/create-movie/create-movie.component';
+import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
+import { EditGenreComponent } from './genres/edit-genre/edit-genre.component';
+import { EditMovieTheatersComponent } from './movie-theaters/edit-movie-theaters/edit-movie-theaters.component';
+import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,12 +38,17 @@ import { CreateMovieComponent } from './movies/create-movie/create-movie.compone
     IndexMovTheaterComponent,
     CreateMovTheaterComponent,
     CreateMovieComponent,
+    EditActorComponent,
+    EditGenreComponent,
+    EditMovieTheatersComponent,
+    EditMovieComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
