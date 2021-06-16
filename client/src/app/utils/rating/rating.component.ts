@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-rating',
@@ -8,11 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RatingComponent implements OnInit {
   @Input()
   maxRating = 5;
-
   @Input()
   selectedRate = 0;
 
+  @Output()
+  onRating: EventEmitter<number> = new EventEmitter<number>();
+
   maxRatingArr: any[] = [];
+  previousRate = 0;
 
   constructor() {}
 
@@ -22,5 +25,19 @@ export class RatingComponent implements OnInit {
 
   handleMouseEnter(index: number) {
     this.selectedRate = index + 1;
+  }
+
+  handleMouseLeave() {
+    if (this.selectedRate !== 0) {
+      this.selectedRate = this.previousRate;
+    } else {
+      this.selectedRate = 0;
+    }
+  }
+
+  rate(index: number) {
+    this.selectedRate = index + 1;
+    this.previousRate = this.selectedRate;
+    this.onRating.emit(this.selectedRate);
   }
 }
