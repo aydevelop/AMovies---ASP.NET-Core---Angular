@@ -1,25 +1,47 @@
 <app-generic-list [list]="movies">
-  <ng-container loading>This is loading... </ng-container>
+  <ng-container loading>.......</ng-container>
   <ng-container empty>
     There are <b>no</b> content to display....
   </ng-container>
   <ng-container content>
-    <div
-      *ngFor="let movie of movies; let index = index"
-      class="movie-container"
-    >
-      <div>
-        {{ index }} {{ movie.title | lowercase }}
-        <button style="margin-left: 1rem" (click)="remove(index)">
-          Remove
-        </button>
+    <div class="movies-container">
+      <div
+        *ngFor="let movie of movies; let index = index"
+        class="movie-container"
+      >
+        <a>
+          <img width="200" [src]="movie.poster" alt="Post" />
+        </a>
+        <p>
+          <a>{{ movie.title }}</a>
+        </p>
+        <div>
+          <a mat-flat-button color="primary">Edit</a>
+          <button mat-flat-button color="warn" type="button">Delete</button>
+        </div>
       </div>
-      <div>
-        {{ movie.releaseDate | date: "dd-MMMM-yyyy" | uppercase }}
+      <!-- <div
+        *ngFor="let movie of movies; let index = index"
+        class="movie-container"
+      >
+        <div>
+          {{ index }} {{ movie.title | lowercase }}
+          <button style="margin-left: 1rem" (click)="remove(index)">
+            Remove
+          </button>
+        </div>
+        <div>
+          {{ movie.releaseDate | date: "dd-MMMM-yyyy" | uppercase }}
+        </div>
+        <div>
+          {{ movie.price | currency }}
+        </div>
       </div>
+
       <div>
-        {{ movie.price | currency }}
-      </div>
+        <a mat-flat-button color="primary">Edit</a>
+        <button mat-flat-button color="warn" type="button">Delete</button>
+      </div> -->
     </div>
   </ng-container>
 </app-generic-list>
