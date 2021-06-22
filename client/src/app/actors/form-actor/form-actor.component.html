@@ -10,7 +10,9 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <app-input-img></app-input-img>
+
+  <app-input-img (onImageSelected)="onImageSelected($event)"></app-input-img>
+
   <div class="btn">
     <button mat-flat-button color="primary" [disabled]="form.invalid">
       Save Changes

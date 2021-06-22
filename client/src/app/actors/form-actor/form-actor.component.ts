@@ -32,9 +32,14 @@ export class FormActorComponent implements OnInit {
       },
     ],
     dateOfBirth: '',
+    picture: '',
   });
 
   saveChanges() {
     this.onSaveChanges.emit(this.form.value);
+  }
+
+  onImageSelected(image: any) {
+    this.form.get('picture')?.setValue(image);
   }
 }
