@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-create-actors',
   templateUrl: './create-actors.component.html',
-  styleUrls: ['./create-actors.component.css']
+  styleUrls: ['./create-actors.component.css'],
 })
 export class CreateActorsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  saveChanges(actorCreationDTO: any) {
+    alert('actorCreationDTO ' + actorCreationDTO);
   }
-
 }
