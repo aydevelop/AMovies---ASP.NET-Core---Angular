@@ -10,7 +10,12 @@ import { ActorCreationDTO } from '../actors.model';
 export class EditActorComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  model: ActorCreationDTO = { name: 'Tom', dateOfBirth: new Date() };
+  model: ActorCreationDTO = {
+    name: 'Tom',
+    dateOfBirth: new Date(),
+    picture:
+      'https://polishposter.com/4239-large_default/5041-jazz-posters-exhibition-polish-poster.jpg',
+  };
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

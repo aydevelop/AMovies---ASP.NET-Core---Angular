@@ -17,12 +17,12 @@ ng g c genres/create-genre --skip-tests=true
 ng g c actors/index-actors --skip-tests=true
 ng g c movie-theathers/index-mov-theater --skip-tests=true
 
-
 ng g c actors/edit-actor --skip-tests=true
 ng g c movie-theaters/edit-movie-theaters --skip-tests=true
 
 ng g c movie/movie-filter --skip-tests=true
-
 ng g c actors/form-actor --skip-tests=true
-
 ng g c utils/input-img --skip-tests=true
+
+npm i ngx-markdown
+ng g c utils/input-markdown --skip-tests=true
