@@ -13,6 +13,7 @@ export class EditActorComponent implements OnInit {
   model: ActorCreationDTO = {
     name: 'Tom',
     dateOfBirth: new Date(),
+    bio: 'bio######',
     picture:
       'https://polishposter.com/4239-large_default/5041-jazz-posters-exhibition-polish-poster.jpg',
   };

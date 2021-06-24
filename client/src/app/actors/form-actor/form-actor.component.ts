@@ -15,9 +15,11 @@ export class FormActorComponent implements OnInit {
   ngOnInit(): void {
     if (this.model !== undefined) {
       this.form.patchValue(this.model);
+      this.bio = this.model.bio!;
     }
   }
 
+  bio: string = '';
   @Output()
   onSaveChanges = new EventEmitter<ActorCreationDTO>();
 
@@ -33,6 +35,7 @@ export class FormActorComponent implements OnInit {
     ],
     dateOfBirth: '',
     picture: '',
+    bio: '',
   });
 
   saveChanges() {
@@ -41,5 +44,10 @@ export class FormActorComponent implements OnInit {
 
   onImageSelected(image: any) {
     this.form.get('picture')?.setValue(image);
+  }
+
+  changeMarkdown(content: any): void {
+    this.form.get('bio')?.setValue(content);
+    this.model.bio = content;
   }
 }

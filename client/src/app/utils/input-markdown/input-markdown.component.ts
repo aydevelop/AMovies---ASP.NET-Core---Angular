@@ -15,4 +15,8 @@ export class InputMarkdownComponent implements OnInit {
   markdownContent = '';
 
   ngOnInit(): void {}
+
+  onchange(event: any): void {
+    this.changeMarkdown.emit(event.target.value);
+  }
 }
