@@ -14,8 +14,8 @@ import { IndexGenresComponent } from './genres/index-genres/index-genres.compone
 import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
 import { IndexActorsComponent } from './actors/index-actors/index-actors.component';
 import { CreateActorsComponent } from './actors/create-actors/create-actors.component';
-import { IndexMovTheaterComponent } from './movie-theathers/index-mov-theater/index-mov-theater.component';
-import { CreateMovTheaterComponent } from './movie-theathers/create-mov-theater/create-mov-theater.component';
+import { IndexMovTheaterComponent } from './movie-theaters/index-mov-theater/index-mov-theater.component';
+import { CreateMovTheaterComponent } from './movie-theaters/create-mov-theater/create-mov-theater.component';
 import { CreateMovieComponent } from './movies/create-movie/create-movie.component';
 import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
 import { EditGenreComponent } from './genres/edit-genre/edit-genre.component';
@@ -28,6 +28,7 @@ import { FormActorComponent } from './actors/form-actor/form-actor.component';
 import { InputImgComponent } from './utils/input-img/input-img.component';
 import { InputMarkdownComponent } from './utils/input-markdown/input-markdown.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { MovieTheaterFormComponent } from './movie-theaters/movie-theater-form/movie-theater-form.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MarkdownModule } from 'ngx-markdown';
     FormActorComponent,
     InputImgComponent,
     InputMarkdownComponent,
+    MovieTheaterFormComponent,
   ],
   imports: [
     BrowserModule,
