@@ -26,3 +26,12 @@ ng g c utils/input-img --skip-tests=true
 
 npm i ngx-markdown
 ng g c utils/input-markdown --skip-tests=true
+
+ng g c utils/map --skip-tests=true
+
+npm install leaflet
+npm install @asymmetrik/ngx-leaflet
+npm install --save-dev @types/leaflet
+
+
+ng g c movies/form-movie --skip-tests=true
