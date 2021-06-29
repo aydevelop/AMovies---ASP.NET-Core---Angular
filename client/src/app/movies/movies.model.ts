@@ -12,7 +12,7 @@ export interface movieCreationDTO {
 export interface movieDTO {
   title: string;
   summary: string;
-  poster: string;
+  poster: string | null;
   inTheaters: boolean;
   releaseDate: Date;
   trailer: string;

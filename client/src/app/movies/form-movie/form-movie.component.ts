@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { movieDTO } from '../movies.model';
+import { movieCreationDTO, movieDTO } from '../movies.model';
 
 @Component({
   selector: 'app-form-movie',
@@ -9,6 +9,9 @@ import { movieDTO } from '../movies.model';
 })
 export class FormMovieComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
+
+  @Output()
+  onSaveChanges = new EventEmitter<movieCreationDTO>();
 
   @Input()
   model!: movieDTO;
@@ -27,17 +30,26 @@ export class FormMovieComponent implements OnInit {
       inTheaters: false,
       trailer: '',
       releaseDate: '',
-      poster: '54323',
+      poster: '',
       genresIds: '',
       movieTheatersIds: '',
     });
 
-    this.form.getRawValue();
+    if (this.model !== undefined) {
+      this.form.patchValue(this.model);
+    }
   }
 
-  saveChanges() {}
+  saveChanges() {
+    this.onSaveChanges.emit(this.form.value);
+  }
 
   onImageSelected(file: File) {
-    this.form.get('poster')!.setValue(null);
+    this.form.get('poster')?.setValue(null);
+  }
+
+  changeMarkdown(content: string) {
+    this.form.get('summary')?.setValue(content);
+    console.log('summary: ' + content);
   }
 }
