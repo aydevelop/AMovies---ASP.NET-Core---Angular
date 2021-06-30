@@ -18,13 +18,19 @@ export class FormMovieComponent implements OnInit {
   model!: movieDTO;
   form!: FormGroup;
 
+  selectedGenres: multipleSelectorModel[] = [];
   nonSelectedGenres: multipleSelectorModel[] = [
     { key: 1, value: 'Drama' },
-    { key: 2, value: 'Action' },
+    { key: 2, value: 'Action ' },
     { key: 3, value: 'Comedy' },
   ];
 
-  selectedGenres: multipleSelectorModel[] = [];
+  selectedMovieTheaters: multipleSelectorModel[] = [];
+  nonSelectedMovieTheaters: multipleSelectorModel[] = [
+    { key: 1, value: 'Agora' },
+    { key: 2, value: 'Sambil' },
+    { key: 3, value: 'Megacentro' },
+  ];
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -51,6 +57,10 @@ export class FormMovieComponent implements OnInit {
   saveChanges() {
     const ids = this.selectedGenres.map((value) => value.key);
     this.form.get('genresIds')?.setValue(ids);
+
+    const ids2 = this.selectedMovieTheaters.map((value) => value.key);
+    this.form.get('movieTheatersIds')?.setValue(ids2);
+
     this.onSaveChanges.emit(this.form.value);
   }
 
@@ -60,6 +70,5 @@ export class FormMovieComponent implements OnInit {
 
   changeMarkdown(content: string) {
     this.form.get('summary')?.setValue(content);
-    console.log('summary: ' + content);
   }
 }

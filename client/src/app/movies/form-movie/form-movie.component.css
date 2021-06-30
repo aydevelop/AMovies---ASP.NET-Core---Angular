@@ -17,3 +17,8 @@ button {
 .btn {
   margin-top: 50px;
 }
+
+h4 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
