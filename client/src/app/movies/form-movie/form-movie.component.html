@@ -28,14 +28,19 @@
   ></app-input-img>
 
   <h4>Summary</h4>
-
   <app-input-markdown
     [markdownContent]="model?.summary!"
     (changeMarkdown)="changeMarkdown($event)"
   >
   </app-input-markdown>
 
-  <div>
+  <h4>Select the Genres</h4>
+  <app-multiple-selector
+    [NonSelectedItems]="nonSelectedGenres"
+    [SelectedItems]="selectedGenres"
+  ></app-multiple-selector>
+
+  <div class="btn">
     <button mat-flat-button color="primary" [disabled]="form.invalid">
       Save Changes
     </button>

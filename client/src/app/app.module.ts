@@ -32,6 +32,7 @@ import { MovieTheaterFormComponent } from './movie-theaters/movie-theater-form/m
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { MapComponent } from './utils/map/map.component';
 import { FormMovieComponent } from './movies/form-movie/form-movie.component';
+import { MultipleSelectorComponent } from './utils/multiple-selector/multiple-selector.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { FormMovieComponent } from './movies/form-movie/form-movie.component';
     MovieTheaterFormComponent,
     MapComponent,
     FormMovieComponent,
+    MultipleSelectorComponent,
   ],
   imports: [
     BrowserModule,
