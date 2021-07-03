@@ -37,7 +37,7 @@ export class ActorsAuthocompleteComponent implements OnInit {
   selectedActors: any[] = [];
 
   originalActors = this.actors;
-  columnsToDisplay = ['picture', 'name', 'character', 'actions'];
+  columnsToDisplay = ['name', 'picture', 'actions', 'character'];
 
   ngOnInit(): void {
     this.control.valueChanges.subscribe((value) => {
@@ -53,9 +53,15 @@ export class ActorsAuthocompleteComponent implements OnInit {
     if (this.table !== undefined) {
       this.table.renderRows();
     }
+
+    this.control.patchValue('');
   }
 
-  remove(actor: any) {}
+  remove(actor: any) {
+    const index = this.selectedActors.findIndex((a) => a.name === actor.name);
+    this.selectedActors.splice(index, 1);
+    this.table?.renderRows();
+  }
 
   displayedColumns: string[] = ['name'];
   dataSource = ELEMENT_DATA;
