@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -55,6 +56,14 @@ export class ActorsAuthocompleteComponent implements OnInit {
     }
 
     this.control.patchValue('');
+  }
+
+  dropped(event: any) {
+    const previousIndex = this.selectedActors.findIndex(
+      (actor) => actor === event.item.data
+    );
+
+    console.log('previousIndex ' + previousIndex);
   }
 
   remove(actor: any) {
