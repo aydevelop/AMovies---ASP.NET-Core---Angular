@@ -11,7 +11,6 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Microsoft.O
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csprojAssemblyReference.cache
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.AssemblyInfoInputs.cache
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.AssemblyInfo.cs
@@ -27,3 +26,4 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.d
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csprojAssemblyReference.cache
