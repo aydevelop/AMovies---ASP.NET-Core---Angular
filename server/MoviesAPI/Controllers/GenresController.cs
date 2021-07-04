@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MoviesAPI.Entities;
+using MoviesAPI.Filters;
 using MoviesAPI.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,10 +14,12 @@ namespace MoviesAPI.Controllers
     public class GenresController : Controller
     {
         private readonly IRepository repository;
+        private readonly ILogger<GenresController> logger;
 
-        public GenresController(IRepository repository)
+        public GenresController(IRepository repository, ILogger<GenresController> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
 
         public IActionResult Index()
@@ -24,22 +29,27 @@ namespace MoviesAPI.Controllers
 
         [HttpGet]
         [HttpGet("list")]
+        [ResponseCache(Duration = 1)]
+        [ServiceFilter(typeof(MyActionFilter))]
         public async Task<ActionResult<List<Genre>>> Get()
         {
+            logger.LogInformation("Getting all the genres");
             return await repository.GetAllGenres();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Genre> Get(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             var genre = repository.GetGenreById(id);
             if (genre == null)
             {
+                throw new ApplicationException();
+                logger.LogWarning($"Genre with Id {id} not found");
                 return NotFound();
             }
 
@@ -53,6 +63,7 @@ namespace MoviesAPI.Controllers
             //Console.WriteLine("name: " + (Name));
             //Console.WriteLine("genre: " + genre.Id);
             //Console.WriteLine("genre: " + genre.Name);
+            repository.AddGenre(genre);
             return NoContent();
         }
 

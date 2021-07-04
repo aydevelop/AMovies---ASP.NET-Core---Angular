@@ -1,5 +1,8 @@
 dotnet tool install --global dotnet-ef
-
 (dotnet new webapi -o MoviesAPI)
-
 dotnet dev-certs https --trust
+
+app.Use(async (context, next) =>
+{
+	await context.Response.WriteAsync("pipeline2 ....");
+});
