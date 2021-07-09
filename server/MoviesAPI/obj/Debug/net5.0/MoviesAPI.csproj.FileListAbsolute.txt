@@ -59,3 +59,5 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\runtimes\wi
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csprojAssemblyReference.cache
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Humanizer.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

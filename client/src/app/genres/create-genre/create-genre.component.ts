@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { parseWebAPIErrors } from 'src/app/utils/utils';
 import { firstLetterUppercase } from 'src/app/validators/firstLetterUppercase';
 import { genreCreationDTO } from '../genres.model';
 import { GenresService } from '../genres.service';
@@ -24,13 +25,9 @@ export class CreateGenreComponent implements OnInit {
   saveChanges(genreCreationDTO: genreCreationDTO) {
     this.genresService.create(genreCreationDTO).subscribe(
       () => {
-        //this.router.navigate(['/genres']);
         console.error('NO Error !!!!');
       },
-      (error) => console.error('Error')
+      (error) => (this.errors = parseWebAPIErrors(error))
     );
-
-    //console.log(genreCreationDTO);
-    //this.router.navigate(['/genres']);
   }
 }

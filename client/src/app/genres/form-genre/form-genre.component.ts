@@ -31,7 +31,7 @@ export class FormGenreComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.minLength(3),
-          //firstLetterUppercase(),
+          firstLetterUppercase(),
         ],
       },
     ],
