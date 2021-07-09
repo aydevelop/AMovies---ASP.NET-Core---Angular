@@ -1,0 +1,18 @@
+dotnet tool install --global dotnet-ef
+(dotnet new webapi -o MoviesAPI)
+dotnet dev-certs https --trust
+
+app.Use(async (context, next) =>
+{
+	await context.Response.WriteAsync("pipeline2 ....");
+});
+
+
+dotnet -info
+dotnet tool install --global dotnet-ef --version 5.0.3 (dotnet tool update --global dotnet-ef)
+dotnet ef -h
+dotnet tool list -g
+
+(dotnet ef migrations add AddIdentity -p Infrastructure/ -s Skinet/ -o Data/Migrations)
+dotnet ef migrations add Init
+dotnet ef database update

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MoviesAPI.Entities;
-using MoviesAPI.Filters;
-using MoviesAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,13 +12,13 @@ namespace MoviesAPI.Controllers
     [ApiController]
     public class GenresController : Controller
     {
-        private readonly IRepository repository;
         private readonly ILogger<GenresController> logger;
+        private readonly ApplicationDbContext context;
 
-        public GenresController(IRepository repository, ILogger<GenresController> logger)
+        public GenresController(ILogger<GenresController> logger, ApplicationDbContext context)
         {
-            this.repository = repository;
             this.logger = logger;
+            this.context = context;
         }
 
         public IActionResult Index()
@@ -28,55 +27,38 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        [HttpGet("list")]
-        [ResponseCache(Duration = 1)]
-        [ServiceFilter(typeof(MyActionFilter))]
-        public async Task<ActionResult<List<Genre>>> Get()
+        public async System.Threading.Tasks.Task<ActionResult<List<Genre>>> GetAsync()
         {
             logger.LogInformation("Getting all the genres");
-            return await repository.GetAllGenres();
+
+            return await context.Genres.ToListAsync();
+            //return new List<Genre>() { new Genre() { Id = 1, Name = "Comedy" } };
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public ActionResult<Genre> Get(int id)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
-
-            var genre = repository.GetGenreById(id);
-            if (genre == null)
-            {
-                throw new ApplicationException();
-                logger.LogWarning($"Genre with Id {id} not found");
-                return NotFound();
-            }
-
-            return Ok(genre);
+            throw new NotImplementedException();
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Genre genre)
+        public async Task<ActionResult> Post([FromBody] Genre genre)
         {
-            //string Name = "3323";
-            //Console.WriteLine("name: " + (Name));
-            //Console.WriteLine("genre: " + genre.Id);
-            //Console.WriteLine("genre: " + genre.Name);
-            repository.AddGenre(genre);
+            context.Add(genre);
+            await context.SaveChangesAsync();
             return NoContent();
         }
 
         [HttpPut]
         public ActionResult Put([FromBody] Genre genre)
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
 
         [HttpDelete]
         public ActionResult Delete()
         {
-            return NoContent();
+            throw new NotImplementedException();
         }
     }
 }

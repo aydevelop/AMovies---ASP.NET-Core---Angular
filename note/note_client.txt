@@ -35,5 +35,8 @@ npm install --save-dev @types/leaflet
 
 ng g c movies/form-movie --skip-tests=true
 ng g c utils/multiple-selector --skip-tests=true
-
 ng g c actors/actors-authocomplete --skip-tests=true
+
+__________________________________________________________
+
+ng g s genres/genres --skip-tests=true
