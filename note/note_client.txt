@@ -40,3 +40,4 @@ ng g c actors/actors-authocomplete --skip-tests=true
 __________________________________________________________
 
 ng g s genres/genres --skip-tests=true
+ng g c utils/display-errors --skip-tests=true
