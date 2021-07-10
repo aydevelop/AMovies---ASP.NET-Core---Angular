@@ -24,5 +24,9 @@ export class IndexGenresComponent implements OnInit {
     });
   }
 
-  delete(id: number) {}
+  delete(id: number) {
+    this.genresService.delete(id).subscribe(() => {
+      this.loadGenres();
+    });
+  }
 }

@@ -1,4 +1,5 @@
 export interface genreCreationDTO {
+  id: number;
   name: string;
 }
 

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { genreCreationDTO } from '../genres.model';
+import { GenresService } from '../genres.service';
 
 @Component({
   selector: 'app-edit-genre',
@@ -7,13 +9,25 @@ import { genreCreationDTO } from '../genres.model';
   styleUrls: ['./edit-genre.component.css'],
 })
 export class EditGenreComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private genresService: GenresService,
+    private router: Router
+  ) {}
 
-  model: genreCreationDTO = { name: 'Dram123a' };
+  model!: genreCreationDTO;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activateRoute.params.subscribe((params) => {
+      this.genresService.getById(params.id).subscribe((genre) => {
+        this.model = genre;
+      });
+    });
+  }
 
   saveChanges(genreCreationDTO: genreCreationDTO) {
-    console.log(genreCreationDTO);
+    this.genresService.edit(this.model.id, genreCreationDTO).subscribe(() => {
+      this.router.navigate(['/genres']);
+    });
   }
 }

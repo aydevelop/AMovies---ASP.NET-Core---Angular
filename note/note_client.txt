@@ -41,3 +41,5 @@ __________________________________________________________
 
 ng g s genres/genres --skip-tests=true
 ng g c utils/display-errors --skip-tests=true
+
+npm i @sweetalert2/ngx-sweetalert2
