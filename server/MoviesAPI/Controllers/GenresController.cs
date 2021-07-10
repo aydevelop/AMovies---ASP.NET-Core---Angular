@@ -7,6 +7,7 @@ using MoviesAPI.DTOs;
 using MoviesAPI.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MoviesAPI.Controllers
@@ -32,9 +33,9 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
-        public async System.Threading.Tasks.Task<ActionResult<List<GenreDTO>>> GetAsync()
+        public async Task<ActionResult<List<GenreDTO>>> Get()
         {
-            var genres = await context.Genres.ToListAsync();
+            var genres = await context.Genres.OrderBy(x => x.Name).ToListAsync();
             var genresDTOs = mapper.Map<List<GenreDTO>>(genres);
             return genresDTOs;
         }
