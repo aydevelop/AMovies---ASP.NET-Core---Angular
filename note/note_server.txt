@@ -16,3 +16,5 @@ dotnet tool list -g
 (dotnet ef migrations add AddIdentity -p Infrastructure/ -s Skinet/ -o Data/Migrations)
 dotnet ef migrations add Init
 dotnet ef database update
+
+dotnet ef migrations add actors

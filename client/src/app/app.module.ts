@@ -36,6 +36,7 @@ import { FormMovieComponent } from './movies/form-movie/form-movie.component';
 import { MultipleSelectorComponent } from './utils/multiple-selector/multiple-selector.component';
 import { ActorsAuthocompleteComponent } from './actors/actors-authocomplete/actors-authocomplete.component';
 import { DisplayErrorsComponent } from './utils/display-errors/display-errors.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { DisplayErrorsComponent } from './utils/display-errors/display-errors.co
     MarkdownModule.forRoot(),
     LeafletModule,
     HttpClientModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
