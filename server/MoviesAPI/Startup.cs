@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Domain.Inerfaces;
+using Infrastructure.Photos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoviesAPI.Filters;
+using MoviesAPI.Helpers;
 
 namespace MoviesAPI
 {
@@ -39,10 +41,13 @@ namespace MoviesAPI
                 options.Filters.Add(typeof(MyExceptionFilter));
             });
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+
+            services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
+            services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+            services.AddScoped<IFileStorageService, InAppStorageService>();
+            services.AddHttpContextAccessor();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors();
@@ -56,6 +61,7 @@ namespace MoviesAPI
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {

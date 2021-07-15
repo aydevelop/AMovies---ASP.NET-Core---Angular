@@ -11,5 +11,6 @@ namespace MoviesAPI.DTOs
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Biography { get; set; }
+        public Microsoft.AspNetCore.Http.IFormFile Picture { get; set; }
     }
 }
