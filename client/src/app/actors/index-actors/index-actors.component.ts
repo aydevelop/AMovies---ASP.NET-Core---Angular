@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActorDTO } from '../actors.model';
 import { ActorsService } from '../actors.service';
@@ -12,12 +13,15 @@ export class IndexActorsComponent implements OnInit {
 
   actors!: ActorDTO[];
   columnsToDisplay = ['name', 'actions'];
+  totalAmountOfRecords = 0;
   currentPage = 1;
   pageSize = 5;
 
   ngOnInit(): void {
-    this.actorsService.get().subscribe((actors: ActorDTO[]) => {
-      this.actors = actors;
+    this.actorsService.get().subscribe((response: any) => {
+      this.actors = response.body!;
+      this.totalAmountOfRecords = response.headers.get('totalAmountOfRecords');
+      console.log(this.totalAmountOfRecords);
     });
   }
 

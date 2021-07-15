@@ -30,7 +30,8 @@ namespace MoviesAPI
             {
                 opt.AddDefaultPolicy(policy =>
                 {
-                    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                    policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+                    .WithExposedHeaders(new string[] { "totalAmountOfRecords" }); ;
                 });
             });
 

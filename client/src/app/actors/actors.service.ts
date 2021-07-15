@@ -12,8 +12,8 @@ export class ActorsService {
   constructor(private http: HttpClient) {}
   private apiURL = environment.apiURL + '/actors';
 
-  get(): Observable<ActorDTO[]> {
-    return this.http.get<ActorDTO[]>(this.apiURL);
+  get(): Observable<any> {
+    return this.http.get<any>(this.apiURL, { observe: 'response' });
   }
 
   create(actor: ActorCreationDTO): any {
