@@ -19,6 +19,7 @@ namespace MoviesAPI.Controllers
         private readonly IMapper mapper;
         private readonly IPhotoAccessor photoAccessor;
         private readonly IFileStorageService storageService;
+        private readonly string containerName = "actors";
 
         public ActorsController(ApplicationDbContext context, IMapper mapper, IPhotoAccessor photoAccessor, IFileStorageService storageService)
         {
@@ -67,10 +68,24 @@ namespace MoviesAPI.Controllers
         }
 
 
-        [HttpPut]
-        public async Task<ActionResult> Put([FromBody] ActorCreationDTO actorCreation)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, [FromBody] ActorCreationDTO actorCreation)
         {
-            return null;
+            var actor = await context.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+
+            actor = mapper.Map(actorCreation, actor);
+            if (actorCreation.Picture != null)
+            {
+                var img = await storageService.SaveFile("actors", actorCreation.Picture);
+                actor.Picture = img;
+            }
+
+            await context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
@@ -84,6 +99,7 @@ namespace MoviesAPI.Controllers
 
             context.Remove(actor);
             await context.SaveChangesAsync();
+            await storageService.DeleteFile(actor.Picture, containerName);
             return NoContent();
         }
     }

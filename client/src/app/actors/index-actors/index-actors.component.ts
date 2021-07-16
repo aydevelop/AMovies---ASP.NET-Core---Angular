@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActorDTO } from '../actors.model';
 import { ActorsService } from '../actors.service';
 
@@ -18,12 +19,25 @@ export class IndexActorsComponent implements OnInit {
   pageSize = 5;
 
   ngOnInit(): void {
-    this.actorsService.get().subscribe((response: any) => {
-      this.actors = response.body!;
-      this.totalAmountOfRecords = response.headers.get('totalAmountOfRecords');
-      console.log(this.totalAmountOfRecords);
-    });
+    this.loadData();
+  }
+
+  loadData() {
+    this.actorsService
+      .get(this.currentPage, this.pageSize)
+      .subscribe((response: any) => {
+        this.actors = response.body!;
+        this.totalAmountOfRecords = response.headers.get(
+          'totalAmountOfRecords'
+        );
+      });
   }
 
   delete(id: number) {}
+
+  updatePagination(event: PageEvent) {
+    this.currentPage = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.loadData();
+  }
 }

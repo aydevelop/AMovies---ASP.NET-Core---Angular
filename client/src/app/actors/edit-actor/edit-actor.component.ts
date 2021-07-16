@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ActorCreationDTO } from '../actors.model';
+import { ActorsService } from '../actors.service';
 
 @Component({
   selector: 'app-edit-actor',
@@ -8,7 +9,10 @@ import { ActorCreationDTO } from '../actors.model';
   styleUrls: ['./edit-actor.component.css'],
 })
 export class EditActorComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private actorsService: ActorsService
+  ) {}
 
   model: ActorCreationDTO = {
     name: 'Tom',
@@ -20,7 +24,9 @@ export class EditActorComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      // alert(params.id);
+      this.actorsService
+        .getById(params.id)
+        .subscribe((actor) => (this.model = actor));
     });
   }
 
