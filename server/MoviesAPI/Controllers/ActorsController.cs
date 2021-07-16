@@ -34,7 +34,7 @@ namespace MoviesAPI.Controllers
         {
             var queryable = context.Actors.AsQueryable();
             await HttpContext.InsertParametersPaginationInHeader(queryable);
-            var actors = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
+            var actors = await queryable.OrderBy(x => x.Id).Paginate(paginationDTO).ToListAsync();
             return mapper.Map<List<ActorDTO>>(actors);
         }
 
@@ -67,9 +67,8 @@ namespace MoviesAPI.Controllers
             return NoContent();
         }
 
-
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int id, [FromBody] ActorCreationDTO actorCreation)
+        public async Task<ActionResult> Put(int id, [FromForm] ActorCreationDTO actorCreation)
         {
             var actor = await context.Actors.FirstOrDefaultAsync(x => x.Id == id);
             if (actor == null)
@@ -84,6 +83,8 @@ namespace MoviesAPI.Controllers
                 actor.Picture = img;
             }
 
+            actor.Name = actorCreation.Name;
+            //context.Entry(actor).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return NoContent();
         }

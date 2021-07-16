@@ -7,10 +7,6 @@
   <mat-spinner *ngIf="!actors"></mat-spinner>
 </div>
 
-<div>
-  {{ actors | json }}
-</div>
-
 <app-generic-list [list]="actors">
   <ng-container content>
     <table mat-table [dataSource]="actors" class="mat-elevation-z8 table-index">

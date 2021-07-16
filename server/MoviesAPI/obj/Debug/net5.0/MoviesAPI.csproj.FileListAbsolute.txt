@@ -63,4 +63,3 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.d
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
-C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csprojAssemblyReference.cache

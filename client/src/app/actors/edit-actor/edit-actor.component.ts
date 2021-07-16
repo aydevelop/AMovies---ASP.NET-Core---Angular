@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActorCreationDTO } from '../actors.model';
 import { ActorsService } from '../actors.service';
 
@@ -11,16 +11,11 @@ import { ActorsService } from '../actors.service';
 export class EditActorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private actorsService: ActorsService
+    private actorsService: ActorsService,
+    private router: Router
   ) {}
 
-  model: ActorCreationDTO = {
-    name: 'Tom',
-    dateOfBirth: new Date(),
-    bio: 'bio######',
-    picture:
-      'https://polishposter.com/4239-large_default/5041-jazz-posters-exhibition-polish-poster.jpg',
-  };
+  model!: ActorCreationDTO;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -31,7 +26,8 @@ export class EditActorComponent implements OnInit {
   }
 
   saveChanges(actorCreationDTO: ActorCreationDTO) {
-    console.log(actorCreationDTO);
-    alert('test');
+    this.actorsService.edit(this.model.id, actorCreationDTO).subscribe(() => {
+      this.router.navigate(['/actors']);
+    });
   }
 }

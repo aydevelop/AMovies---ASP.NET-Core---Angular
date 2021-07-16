@@ -33,7 +33,11 @@ export class IndexActorsComponent implements OnInit {
       });
   }
 
-  delete(id: number) {}
+  delete(id: number) {
+    this.actorsService.delete(id).subscribe(() => {
+      this.loadData();
+    });
+  }
 
   updatePagination(event: PageEvent) {
     this.currentPage = event.pageIndex + 1;

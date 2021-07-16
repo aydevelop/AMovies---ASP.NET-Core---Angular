@@ -1,4 +1,5 @@
 export interface ActorCreationDTO {
+  id: number;
   name: string;
   dateOfBirth: Date;
   picture: string;
