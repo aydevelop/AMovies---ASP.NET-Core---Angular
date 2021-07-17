@@ -18,3 +18,8 @@ dotnet ef migrations add Init
 dotnet ef database update
 
 dotnet ef migrations add actors
+
+Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite
+
+dotnet ef migrations add movieTheaters
+dotnet ef database update

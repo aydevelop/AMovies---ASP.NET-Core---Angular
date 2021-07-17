@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain.Inerfaces;
 using Infrastructure.Photos;
 using Microsoft.AspNetCore.Builder;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoviesAPI.Filters;
 using MoviesAPI.Helpers;
+using NetTopologySuite;
+using NetTopologySuite.Geometries;
 
 namespace MoviesAPI
 {
@@ -23,8 +26,8 @@ namespace MoviesAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                 options.UseSqlServer(
-                     Configuration.GetConnectionString("DefaultConnection")).EnableSensitiveDataLogging());
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            sqlOptions => sqlOptions.UseNetTopologySuite()));
 
             services.AddCors(opt =>
             {
@@ -35,13 +38,20 @@ namespace MoviesAPI
                 });
             });
 
+            //================================================================================================
             services.AddAutoMapper(typeof(Startup));
+            services.AddSingleton(provider => new MapperConfiguration(config =>
+            {
+                var geometryFactory = provider.GetRequiredService<GeometryFactory>();
+                config.AddProfile(new AutoMapperProfiles(geometryFactory));
+            }).CreateMapper());
+            services.AddSingleton<GeometryFactory>(NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
+            //================================================================================================
 
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(MyExceptionFilter));
             });
-
 
             services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();

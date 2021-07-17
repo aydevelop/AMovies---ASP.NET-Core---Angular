@@ -63,3 +63,7 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.d
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\ref\MoviesAPI.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.pdb
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.genruntimeconfig.cache
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\NetTopologySuite.dll
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\NetTopologySuite.IO.SqlServerBytes.dll
+C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\EFCoreSqlServerNetTopologySuite.cs
