@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using MoviesAPI.DTOs;
 using MoviesAPI.Entities;
-using NetTopologySuite.Geometries;
 
 namespace MoviesAPI.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
-        public AutoMapperProfiles(GeometryFactory geometryFactory)
+        public AutoMapperProfiles()
         {
             CreateMap<GenreDTO, Genre>().ReverseMap();
             CreateMap<GenreCreationDTO, Genre>();
