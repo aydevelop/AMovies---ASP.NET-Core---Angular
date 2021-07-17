@@ -97,4 +97,3 @@ C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\ru\Microsof
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\A2\Desktop\Angular Movies\server\MoviesAPI\obj\Debug\net5.0\MoviesAPI.csprojAssemblyReference.cache
