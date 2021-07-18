@@ -60,7 +60,10 @@ namespace MoviesAPI.Controllers
                 return NotFound();
             }
 
-            movieTheater = mapper.Map(movieCreationDTO, movieTheater);
+            //movieTheater = mapper.Map(movieCreationDTO, movieTheater);
+
+            movieTheater.Name = movieCreationDTO.Name;
+
             await context.SaveChangesAsync();
             return NoContent();
         }

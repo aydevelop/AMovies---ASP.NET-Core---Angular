@@ -22,4 +22,12 @@ export class MovieTheatersService {
   public get(): Observable<movieTheatersDTO[]> {
     return this.http.get<movieTheatersDTO[]>(this.apiURL);
   }
+
+  public getById(id: number): Observable<movieTheatersDTO> {
+    return this.http.get<movieTheatersDTO>(`${this.apiURL}/${id}`);
+  }
+
+  public edit(id: number, movieTheaterDTO: movieTheatersCreationDTO) {
+    return this.http.put(`${this.apiURL}/${id}`, movieTheaterDTO);
+  }
 }

@@ -14,11 +14,14 @@ export class IndexMovTheaterComponent implements OnInit {
   constructor(private movieTheatersService: MovieTheatersService) {}
 
   movieTheaters!: movieTheatersDTO[];
+  displayColumns = ['name', 'actions'];
 
   ngOnInit(): void {
     this.movieTheatersService.get().subscribe((movie) => {
-      console.log(movie);
       this.movieTheaters = movie;
+      console.log(this.movieTheaters);
     });
   }
+
+  delete(id: number) {}
 }

@@ -1,4 +1,4 @@
-<ng-container *ngIf="list.length === 0">
+<ng-container *ngIf="list?.length === 0">
   <h4 #loading>
     <ng-content select="[loading]"></ng-content>
   </h4>
@@ -17,6 +17,6 @@
   <span *ngIf="!empty.innerHTML.trim()">There are no records to display</span>
 </div>
 
-<ng-container *ngIf="list" && list.length>
+<ng-container *ngIf="list" && list?.length>
   <ng-content select="[content]"></ng-content>
 </ng-container>
