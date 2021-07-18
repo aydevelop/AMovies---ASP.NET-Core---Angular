@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MoviesAPI.Controllers
 {
     [ApiController]
-    [Route("api/genres")]
+    [Route("api/movietheaters")]
     public class MovieTheatersController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -43,10 +43,38 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(MovieTheaterCreationDTO movieCreationDTO)
+        public async Task<ActionResult> Post(MovieTheater movieCreationDTO)
         {
-            var movieTheater = mapper.Map<MovieTheater>(movieCreationDTO);
-            context.Add(movieTheater);
+            //var movieTheater = mapper.Map<MovieTheater>(movieCreationDTO);
+            context.Add(movieCreationDTO);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, MovieTheaterCreationDTO movieCreationDTO)
+        {
+            var movieTheater = await context.MovieThreaters.FirstOrDefaultAsync(x => x.Id == id);
+            if (movieTheater == null)
+            {
+                return NotFound();
+            }
+
+            movieTheater = mapper.Map(movieCreationDTO, movieTheater);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var movieTheater = await context.MovieThreaters.FirstOrDefaultAsync(x => x.Id == id);
+            if (movieTheater == null)
+            {
+                return NotFound();
+            }
+
+            context.Remove(movieTheater);
             await context.SaveChangesAsync();
             return NoContent();
         }
