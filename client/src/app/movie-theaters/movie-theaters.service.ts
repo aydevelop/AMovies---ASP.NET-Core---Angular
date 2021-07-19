@@ -24,10 +24,14 @@ export class MovieTheatersService {
   }
 
   public getById(id: number): Observable<movieTheatersDTO> {
-    return this.http.get<movieTheatersDTO>(`${this.apiURL}/${id}`);
+    return this.http.delete<movieTheatersDTO>(`${this.apiURL}/${id}`);
   }
 
   public edit(id: number, movieTheaterDTO: movieTheatersCreationDTO) {
     return this.http.put(`${this.apiURL}/${id}`, movieTheaterDTO);
+  }
+
+  public delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiURL}/${id}`);
   }
 }
