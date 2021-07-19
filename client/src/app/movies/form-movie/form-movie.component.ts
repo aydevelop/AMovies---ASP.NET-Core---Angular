@@ -19,18 +19,12 @@ export class FormMovieComponent implements OnInit {
   form!: FormGroup;
 
   selectedGenres: multipleSelectorModel[] = [];
-  nonSelectedGenres: multipleSelectorModel[] = [
-    { key: 1, value: 'Drama' },
-    { key: 2, value: 'Action ' },
-    { key: 3, value: 'Comedy' },
-  ];
+  @Input()
+  nonSelectedGenres!: multipleSelectorModel[];
 
   selectedMovieTheaters: multipleSelectorModel[] = [];
-  nonSelectedMovieTheaters: multipleSelectorModel[] = [
-    { key: 1, value: 'Agora' },
-    { key: 2, value: 'Sambil' },
-    { key: 3, value: 'Megacentro' },
-  ];
+  @Input()
+  nonSelectedMovieTheaters!: multipleSelectorModel[];
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

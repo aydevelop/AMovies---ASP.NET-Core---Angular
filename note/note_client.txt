@@ -41,9 +41,10 @@ __________________________________________________________
 
 ng g s genres/genres --skip-tests=true
 ng g c utils/display-errors --skip-tests=true
-
 npm i @sweetalert2/ngx-sweetalert2
-
 ng g s actors/actors --skip-tests=true
-
 ng g s movie-theaters/movie-theaters --skip-tests=true
+
+ng g s movies/movies --skip-tests=true
+
+
