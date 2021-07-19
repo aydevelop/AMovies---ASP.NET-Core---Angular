@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable } from '@angular/material/table';
+import { actorsMovieDTO } from '../actors.model';
+import { ActorsService } from '../actors.service';
 
 @Component({
   selector: 'app-actors-authocomplete',
@@ -10,7 +12,7 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./actors-authocomplete.component.css'],
 })
 export class ActorsAuthocompleteComponent implements OnInit {
-  constructor() {}
+  constructor(private actorsService: ActorsService) {}
 
   control: FormControl = new FormControl();
 
@@ -40,10 +42,15 @@ export class ActorsAuthocompleteComponent implements OnInit {
   originalActors = this.actors;
   columnsToDisplay = ['name', 'picture', 'actions', 'character'];
 
+  actorsToDisplay: actorsMovieDTO[] = [];
+
   ngOnInit(): void {
     this.control.valueChanges.subscribe((value) => {
       this.actors = this.originalActors;
       this.actors = this.actors.filter((a) => a.name.indexOf(value) !== -1);
+      // this.actorsService.searchByName(value).subscribe(resp => {
+
+      // });
     });
   }
 
