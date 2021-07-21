@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MoviesAPI.Filters;
 using MoviesAPI.Helpers;
 
 namespace MoviesAPI
@@ -50,7 +49,7 @@ namespace MoviesAPI
 
             services.AddControllers(options =>
             {
-                options.Filters.Add(typeof(MyExceptionFilter));
+                //options.Filters.Add(typeof(MyExceptionFilter));
             });
 
             services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { multipleSelectorModel } from 'src/app/utils/multiple-selector/multiple-selector.model';
 import { movieCreationDTO, movieDTO } from '../movies.model';
 import { MoviesService } from '../movies.service';
@@ -18,7 +19,7 @@ export class CreateMovieComponent implements OnInit {
     trailer: 'string',
   };
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService, private router: Router) {}
 
   nonSelectedGenres!: multipleSelectorModel[];
   nonSelectedMovieTheaters!: multipleSelectorModel[];
@@ -42,5 +43,9 @@ export class CreateMovieComponent implements OnInit {
 
   saveChanges(movieCreationDTO: movieCreationDTO): void {
     console.log('console log ', movieCreationDTO);
+    //this.moviesService.create(movieCreationDTO).
+    this.moviesService.create(movieCreationDTO).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
