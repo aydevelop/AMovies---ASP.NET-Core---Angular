@@ -29,6 +29,10 @@ export class MoviesService {
     return this.http.get<homeDTO>(this.apiURL);
   }
 
+  public delete(id: number) {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
+
   public create(movieCreationDTO: movieCreationDTO): Observable<number> {
     const formData = this.BuildFormData(movieCreationDTO);
 

@@ -49,6 +49,10 @@ export class HomeComponent implements OnInit {
     alert(`The user selected  ${rate}`);
   }
 
+  onDelete() {
+    this.loadData();
+  }
+
   moviesInTheaters!: movieDTO[];
   moviesFutureReleases!: movieDTO[];
 
