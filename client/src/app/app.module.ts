@@ -38,6 +38,7 @@ import { ActorsAuthocompleteComponent } from './actors/actors-authocomplete/acto
 import { DisplayErrorsComponent } from './utils/display-errors/display-errors.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
     ActorsAuthocompleteComponent,
     DisplayErrorsComponent,
     MovieDetailComponent,
+    AuthorizeViewComponent,
   ],
   imports: [
     BrowserModule,
