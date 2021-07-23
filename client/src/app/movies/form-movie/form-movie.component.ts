@@ -59,7 +59,7 @@ export class FormMovieComponent implements OnInit {
   }
 
   onImageSelected(file: File) {
-    this.form.get('poster')?.setValue(null);
+    this.form.get('poster')?.setValue(file);
   }
 
   changeMarkdown(content: string) {

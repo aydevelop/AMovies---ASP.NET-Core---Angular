@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { movieDTO } from '../movies/movies.model';
+import { MoviesService } from '../movies/movies.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,11 @@ export class HomeComponent implements OnInit {
   movies1: any[] = [];
   movies2: any[] = [];
 
+  constructor(private moviesService: MoviesService) {}
+
   ngOnInit(): void {
+    this.loadData();
+
     this.movies1 = [
       {
         title: 'Spider-Man!!!###',
@@ -27,18 +33,7 @@ export class HomeComponent implements OnInit {
       },
     ];
 
-    this.movies2 = [
-      // {
-      //   title: 'Spider-Man 222',
-      //   releaseDate: new Date(),
-      //   price: 1400,
-      // },
-      // {
-      //   title: 'Spider-Man 222',
-      //   releaseDate: new Date(),
-      //   price: 2400,
-      // },
-    ];
+    this.movies2 = [];
   }
 
   title = 'angular-movies';
@@ -52,5 +47,16 @@ export class HomeComponent implements OnInit {
 
   handleRating(rate: number) {
     alert(`The user selected  ${rate}`);
+  }
+
+  moviesInTheaters!: movieDTO[];
+  moviesFutureReleases!: movieDTO[];
+
+  loadData() {
+    this.moviesService.getHomePageMovies().subscribe((homeDTO) => {
+      this.moviesFutureReleases = homeDTO.upcomingReleases;
+      this.moviesInTheaters = homeDTO.inTheaters;
+      this.movies1 = this.moviesInTheaters;
+    });
   }
 }

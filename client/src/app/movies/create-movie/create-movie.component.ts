@@ -10,7 +10,7 @@ import { MoviesService } from '../movies.service';
   styleUrls: ['./create-movie.component.css'],
 })
 export class CreateMovieComponent implements OnInit {
-  model: movieDTO = {
+  model: any = {
     title: 'string',
     summary: 'string',
     poster: null,
@@ -42,8 +42,6 @@ export class CreateMovieComponent implements OnInit {
   }
 
   saveChanges(movieCreationDTO: movieCreationDTO): void {
-    console.log('console log ', movieCreationDTO);
-    //this.moviesService.create(movieCreationDTO).
     this.moviesService.create(movieCreationDTO).subscribe(() => {
       this.router.navigate(['/']);
     });

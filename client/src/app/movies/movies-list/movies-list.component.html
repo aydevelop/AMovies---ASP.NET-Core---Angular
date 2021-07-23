@@ -9,8 +9,12 @@
         *ngFor="let movie of movies; let index = index"
         class="movie-container"
       >
-        <a>
-          <img width="200" [src]="movie.poster" alt="Post" />
+        <a [routerLink]="'/movie/' + movie.id">
+          <img
+            width="200"
+            [src]="'http://lorempixel.com/400/200/' + index"
+            alt="Post"
+          />
         </a>
         <p>
           <a>{{ movie.title }}</a>

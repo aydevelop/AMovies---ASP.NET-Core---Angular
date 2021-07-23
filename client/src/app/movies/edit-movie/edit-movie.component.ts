@@ -10,7 +10,7 @@ import { movieCreationDTO, movieDTO } from '../movies.model';
 export class EditMovieComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute) {}
 
-  model: movieDTO = {
+  model: any = {
     title: 'Spider-Man',
     inTheaters: true,
     summary: 'whatever',
