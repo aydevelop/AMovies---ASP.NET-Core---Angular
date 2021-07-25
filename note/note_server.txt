@@ -33,8 +33,59 @@ dotnet ef database update
 2) dotnet ef migrations add IdentityTables
 3) dotnet ef database update
 4) 
-	services.AddIdentity<IdentityUser, IdentityRole>()
-	.AddEntityFrameworkStores<ApplicationDbContext>()
-	.AddDefaultTokenProviders();
 
-	services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+		.AddJwtBearer(options =>
+		{
+			options.TokenValidationParameters = new TokenValidationParameters
+			{
+				ValidateIssuer = false,
+				ValidateAudience = false,
+				ValidateLifetime = true,
+				ValidateIssuerSigningKey = true,
+				IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["keyjwt"])),
+				ClockSkew = TimeSpan.Zero
+			};
+		});
+		
+5) AccountsController ...
+
+6) 
+	public class UserCredentials
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
+    }
+	
+	private async Task<AuthenticationResponse> BuildToken(UserCredentials userCredentials)
+	{
+		var claims = new List<Claim>() { new Claim("email", userCredentials.Email) };
+		var user = await userManager.FindByNameAsync(userCredentials.Email);
+		var claimsDB = await userManager.GetClaimsAsync(user);
+		claims.AddRange(claimsDB);
+
+		var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["keyjwt"]));
+		var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+		var expiration = DateTime.UtcNow.AddYears(1);
+		var token = new JwtSecurityToken(issuer: null, audience: null, claims: claims,
+			expires: expiration, signingCredentials: creds);
+
+		return new AuthenticationResponse()
+		{
+			Token = new JwtSecurityTokenHandler().WriteToken(token),
+			Expiration = expiration
+		};
+	}
+
+
+
+		
+		

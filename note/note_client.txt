@@ -53,3 +53,8 @@ ng g s security/security --skip-tests=true
 ng generate guard is-admin --skip-tests=true
 
 ng g c security/login --skip-tests=true
+ng g c security/register --skip-tests=true
+ng g c security/authentication-form --skip-tests=true
+
+
+

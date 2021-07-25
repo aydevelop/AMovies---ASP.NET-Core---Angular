@@ -16,12 +16,14 @@ import { MovieFilterComponent } from './movies/movie-filter/movie-filter.compone
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { IsAdminGuard } from './is-admin.guard';
 import { LoginComponent } from './security/login/login.component';
+import { RegisterComponent } from './security/register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'movies/filter', component: MovieFilterComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
   {
     path: '',

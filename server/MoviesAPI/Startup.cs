@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using MoviesAPI.Filters;
 using MoviesAPI.Helpers;
 using System;
 using System.Text;
@@ -54,7 +55,7 @@ namespace MoviesAPI
 
             services.AddControllers(options =>
             {
-                //options.Filters.Add(typeof(MyExceptionFilter));
+                options.Filters.Add(typeof(MyExceptionFilter));
             });
 
             services.Configure<CloudinarySettings>(Configuration.GetSection("Cloudinary"));
