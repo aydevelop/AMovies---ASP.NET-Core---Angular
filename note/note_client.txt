@@ -51,3 +51,5 @@ ng g c movies/movie-detail --skip-tests=true
 ng g c security/authorize-view
 ng g s security/security --skip-tests=true
 ng generate guard is-admin --skip-tests=true
+
+ng g c security/login --skip-tests=true

@@ -27,3 +27,14 @@ dotnet ef database update
 dotnet ef migrations add MovieAndMore
 dotnet ef database update
 
+------------------------------------- Config Identity --------------------------------------
+
+1) public class ApplicationDbContext : DbContext => public class ApplicationDbContext : IdentityDbContext
+2) dotnet ef migrations add IdentityTables
+3) dotnet ef database update
+4) 
+	services.AddIdentity<IdentityUser, IdentityRole>()
+	.AddEntityFrameworkStores<ApplicationDbContext>()
+	.AddDefaultTokenProviders();
+
+	services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();

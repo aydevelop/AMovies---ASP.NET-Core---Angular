@@ -39,6 +39,7 @@ import { DisplayErrorsComponent } from './utils/display-errors/display-errors.co
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
+import { LoginComponent } from './security/login/login.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { AuthorizeViewComponent } from './security/authorize-view/authorize-view
     DisplayErrorsComponent,
     MovieDetailComponent,
     AuthorizeViewComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

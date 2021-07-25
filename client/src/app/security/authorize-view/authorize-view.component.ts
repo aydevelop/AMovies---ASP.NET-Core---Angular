@@ -15,8 +15,6 @@ export class AuthorizeViewComponent implements OnInit {
   role!: string;
 
   public isAuthorized() {
-    return true;
-
     if (this.role) {
       return this.securityService.getRole() === this.role;
     }

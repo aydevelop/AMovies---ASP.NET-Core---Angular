@@ -14,27 +14,34 @@ import { CreateMovieComponent } from './movies/create-movie/create-movie.compone
 import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
 import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { IsAdminGuard } from './is-admin.guard';
+import { LoginComponent } from './security/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-
-  { path: 'genres', component: IndexGenresComponent },
-  { path: 'genres/create', component: CreateGenreComponent },
-  { path: 'genres/edit/:id', component: EditGenreComponent },
-
-  { path: 'actors', component: IndexActorsComponent },
-  { path: 'actors/create', component: CreateActorsComponent },
-  { path: 'actors/edit/:id', component: EditActorComponent },
-
-  { path: 'movietheaters', component: IndexMovTheaterComponent },
-  { path: 'movietheaters/create', component: CreateMovTheaterComponent },
-  { path: 'movietheaters/edit/:id', component: EditMovieTheatersComponent },
-
-  { path: 'movies/create', component: CreateMovieComponent },
-  { path: 'movies/edit/:id', component: EditMovieComponent },
   { path: 'movies/filter', component: MovieFilterComponent },
-
   { path: 'movie/:id', component: MovieDetailComponent },
+  { path: 'login', component: LoginComponent },
+
+  {
+    path: '',
+    canActivate: [IsAdminGuard],
+    children: [
+      { path: 'genres', component: IndexGenresComponent },
+      { path: 'genres/create', component: CreateGenreComponent },
+      { path: 'genres/edit/:id', component: EditGenreComponent },
+
+      { path: 'actors', component: IndexActorsComponent },
+      { path: 'actors/create', component: CreateActorsComponent },
+      { path: 'actors/edit/:id', component: EditActorComponent },
+
+      { path: 'movietheaters', component: IndexMovTheaterComponent },
+      { path: 'movietheaters/create', component: CreateMovTheaterComponent },
+      { path: 'movietheaters/edit/:id', component: EditMovieTheatersComponent },
+      { path: 'movies/create', component: CreateMovieComponent },
+      { path: 'movies/edit/:id', component: EditMovieComponent },
+    ],
+  },
 
   { path: '**', redirectTo: '' },
 ];
