@@ -28,6 +28,11 @@ namespace MoviesAPI.Controllers
             this.configuration = configuration;
         }
 
+        public IActionResult Index()
+        {
+            return Content("Content");
+        }
+
         [HttpPost("create")]
         public async Task<ActionResult<AuthenticationResponse>> Create([FromBody] UserCredentials userCredentials)
         {

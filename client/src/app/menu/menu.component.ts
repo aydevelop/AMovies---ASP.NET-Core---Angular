@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SecurityService } from '../security/security.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,5 +8,5 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(public securityService: SecurityService) {}
 }

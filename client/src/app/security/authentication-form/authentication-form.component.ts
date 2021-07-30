@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { userCredentials } from '../security.models';
+import { UserCredentials } from '../security.models';
 
 @Component({
   selector: 'app-authentication-form',
@@ -13,7 +13,7 @@ export class AuthenticationFormComponent implements OnInit {
   @Input()
   action: string = 'Register';
   @Output()
-  onSubmit = new EventEmitter<userCredentials>();
+  onSubmit = new EventEmitter<UserCredentials>();
 
   form!: FormGroup;
   ngOnInit(): void {
