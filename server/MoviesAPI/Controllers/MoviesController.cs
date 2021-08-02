@@ -94,6 +94,7 @@ namespace MoviesAPI.Controllers
             var averageVote = 0.0;
             var userVote = 0;
 
+
             if (await context.Ratings.AnyAsync(x => x.MovieId == id))
             {
                 averageVote = await context.Ratings.Where(x => x.MovieId == id).AverageAsync(x => x.Rate);
@@ -111,6 +112,7 @@ namespace MoviesAPI.Controllers
                 }
             }
 
+
             var dto = mapper.Map<MovieDTO>(movie);
             //dto.Actors = await context.Actors.ToListAsync();
 
@@ -121,6 +123,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<HomeDTO>> Get()
         {
             var top = 5;

@@ -6,3 +6,8 @@ mat-chip-list {
 mat-chip {
   cursor: pointer;
 }
+
+.vote-box {
+  position: relative;
+  top: 5px;
+}

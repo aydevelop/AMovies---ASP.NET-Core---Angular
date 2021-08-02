@@ -20,6 +20,8 @@ export interface movieDTO {
   inTheaters: boolean;
   releaseDate: Date;
   trailer: string;
+  averageVote: number;
+  userVote: number;
 }
 
 export interface MoviePostGetDTO {

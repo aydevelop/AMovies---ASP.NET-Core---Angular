@@ -22,7 +22,14 @@
 
     <br />
     <br />
-    {{ releaseDate.toDateString() }} | Average: 0.0 | Your vote: 0.0
+    {{ releaseDate.toDateString() }} | Average: {{ movie.averageVote }} | Your
+    vote:
+    <span class="vote-box">
+      <app-rating
+        (onRating)="onRating($event)"
+        [selectedRate]="movie.userVote"
+      ></app-rating>
+    </span>
   </div>
 </div>
 
@@ -36,3 +43,6 @@
 </div>
 
 <mat-spinner *ngIf="!movie"></mat-spinner>
+
+<!-- <hr />
+{{ movie | json }} -->
