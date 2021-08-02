@@ -56,4 +56,7 @@ ng g c security/login --skip-tests=true
 ng g c security/register --skip-tests=true
 ng g c security/authentication-form --skip-tests=true
 
+__________________________________________________________
+
+ng g s 
 

@@ -84,8 +84,29 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 			Expiration = expiration
 		};
 	}
+7)	
+	public Startup(IConfiguration configuration) //)	(HttpContext.User.GetUserId() of authenticated controller returns user ID correctly)
+	{
+		JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
+8)  
+	[HttpPost]
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+	public async Task<ActionResult> Post([FromBody] RatingDTO ratingDTO)
+	{
+	
+8.2)
+	[HttpGet("{id:int}")]
+	[AllowAnonymous]
+	public async Task<ActionResult<MovieDTO>> Get(int id)
+	{	
+	
+	
 
+			
+-------------------------------------------------------------------------------------
+
+dotnet ef migrations add RatingTable
 
 		
 		

@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using MoviesAPI.Filters;
 using MoviesAPI.Helpers;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
 namespace MoviesAPI
@@ -20,6 +21,7 @@ namespace MoviesAPI
     {
         public Startup(IConfiguration configuration)
         {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             Configuration = configuration;
         }
 

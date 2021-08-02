@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Inerfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoviesAPI.DTOs;
@@ -14,6 +17,7 @@ namespace MoviesAPI.Controllers
 {
     [ApiController]
     [Route("api/movies")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MoviesController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -21,13 +25,16 @@ namespace MoviesAPI.Controllers
         private readonly IPhotoAccessor photoAccessor;
         private readonly IFileStorageService storageService;
         private string container = "movies";
+        private readonly UserManager<IdentityUser> userManager;
 
-        public MoviesController(ApplicationDbContext context, IMapper mapper, IPhotoAccessor photoAccessor, IFileStorageService storageService)
+
+        public MoviesController(ApplicationDbContext context, IMapper mapper, IPhotoAccessor photoAccessor, IFileStorageService storageService, UserManager<IdentityUser> userManager)
         {
             this.context = context;
             this.mapper = mapper;
             this.photoAccessor = photoAccessor;
             this.storageService = storageService;
+            this.userManager = userManager;
         }
 
         [HttpGet("PostGet")]
@@ -70,6 +77,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<MovieDTO>> Get(int id)
         {
             var movie = await context.Movies
@@ -83,8 +91,31 @@ namespace MoviesAPI.Controllers
                 return NotFound();
             }
 
+            var averageVote = 0.0;
+            var userVote = 0;
+
+            if (await context.Ratings.AnyAsync(x => x.MovieId == id))
+            {
+                averageVote = await context.Ratings.Where(x => x.MovieId == id).AverageAsync(x => x.Rate);
+                if (HttpContext.User.Identity.IsAuthenticated)
+                {
+                    var email = HttpContext.User.Claims.FirstOrDefault(x => x.Type == "email").Value;
+                    var user = await userManager.FindByEmailAsync(email);
+                    var userId = user.Id;
+
+                    var ratingDb = await context.Ratings.FirstOrDefaultAsync(x => x.MovieId == id && x.UserId == userId);
+                    if (ratingDb != null)
+                    {
+                        userVote = ratingDb.Rate;
+                    }
+                }
+            }
+
             var dto = mapper.Map<MovieDTO>(movie);
             //dto.Actors = await context.Actors.ToListAsync();
+
+            dto.AverageVote = averageVote;
+            dto.UserVote = userVote;
 
             return dto;
         }
@@ -114,6 +145,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("putget/{id:int}")]
+        [AllowAnonymous]
         public async Task<ActionResult<MoviePutGetDTO>> PutGet(int id)
         {
             var movieActionResult = await Get(id);
