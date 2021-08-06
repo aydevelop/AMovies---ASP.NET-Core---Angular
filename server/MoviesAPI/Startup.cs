@@ -82,6 +82,12 @@ namespace MoviesAPI
                         ClockSkew = TimeSpan.Zero
                     };
                 });
+
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("IsAdmin", policy => policy.RequireClaim("role", "admin"));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
