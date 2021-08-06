@@ -17,6 +17,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { IsAdminGuard } from './is-admin.guard';
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
+import { UsersIndexComponent } from './security/users-index/users-index.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,6 +43,8 @@ const routes: Routes = [
       { path: 'movietheaters/edit/:id', component: EditMovieTheatersComponent },
       { path: 'movies/create', component: CreateMovieComponent },
       { path: 'movies/edit/:id', component: EditMovieComponent },
+
+      { path: 'users', component: UsersIndexComponent },
     ],
   },
 

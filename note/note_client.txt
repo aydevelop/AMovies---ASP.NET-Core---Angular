@@ -59,5 +59,8 @@ ng g c security/authentication-form --skip-tests=true
 __________________________________________________________
 
 ng g s security/jwt-interceptor --skip-tests=true
+ng g c security/users-index --skip-tests=true
+
+
 
 
