@@ -73,6 +73,7 @@ export class SecurityService {
   logout() {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.expirationTokenKey);
+    window.location.href = '/';
   }
 
   getRole(): string {
